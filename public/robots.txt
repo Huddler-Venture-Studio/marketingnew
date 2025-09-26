@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://huddler.io
+
+# Sitemaps
+Sitemap: https://huddler.io/sitemap.xml
