@@ -29,10 +29,13 @@ export function NavigationMenuHeader({
   links: HeaderLiksFragment[];
   className?: string;
 }) {
-  // Add hardcoded navigation links for Docs and Knowledge Base
+  // Add hardcoded navigation links
   const additionalLinks: ExtendedHeaderLink[] = [
     { _id: 'docs', _title: 'Docs', href: 'https://docs.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://knowledge.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'founder', _title: 'Founder', href: 'https://portfolio.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'launchweek', _title: 'Launch Week', href: 'https://launch.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://base.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'gallery', _title: 'Gallery', href: 'https://photo.huddler.io', sublinks: { items: [] }, isExternal: true },
   ];
 
   const allLinks: ExtendedHeaderLink[] = [...links, ...additionalLinks];
@@ -193,7 +196,10 @@ export function MobileMenu({ navbar, rightCtas }: HeaderFragment) {
   // Add hardcoded navigation links for mobile as well
   const additionalLinks: ExtendedHeaderLink[] = [
     { _id: 'docs', _title: 'Docs', href: 'https://docs.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://knowledge.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'founder', _title: 'Founder', href: 'https://portfolio.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'launchweek', _title: 'Launch Week', href: 'https://launch.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://base.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'gallery', _title: 'Gallery', href: 'https://photo.huddler.io', sublinks: { items: [] }, isExternal: true },
   ];
 
   const allLinks: ExtendedHeaderLink[] = [...navbar.items, ...additionalLinks];
