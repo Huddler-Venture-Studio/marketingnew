@@ -59,7 +59,9 @@ export default async function UpdatesPage() {
     },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const updates = (data as any).days.items;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const generalCopy = (data as any).generalCopy;
 
   return (
