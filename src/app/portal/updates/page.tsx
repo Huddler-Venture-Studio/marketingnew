@@ -25,7 +25,7 @@ export default async function UpdatesPage() {
     redirect("/sign-in");
   }
 
-  const { isEnabled: isDraftMode } = await draftMode();
+  await draftMode();
 
   const data = await weeklyUpdateClient.query({
     __typename: true,

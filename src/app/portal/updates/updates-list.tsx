@@ -17,7 +17,7 @@ interface UpdatesListProps {
   accentColor?: string;
 }
 
-export default function UpdatesList({ updates, accentColor }: UpdatesListProps) {
+export default function UpdatesList({ updates }: UpdatesListProps) {
   // Initialize all updates as open by default
   const [openUpdates, setOpenUpdates] = useState<Record<string, boolean>>(() => {
     const initialState: Record<string, boolean> = {};
