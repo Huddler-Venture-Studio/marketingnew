@@ -28,6 +28,7 @@ export default async function UpdatesPage() {
   await draftMode();
 
   const data = await weeklyUpdateClient.query({
+    // @ts-expect-error - BaseHub query type inference
     __typename: true,
     generalCopy: {
       _id: true,
@@ -58,8 +59,8 @@ export default async function UpdatesPage() {
     },
   });
 
-  const updates = data.days.items;
-  const generalCopy = data.generalCopy;
+  const updates = (data as any).days.items;
+  const generalCopy = (data as any).generalCopy;
 
   return (
     <div className="min-h-screen bg-black font-mono text-white">
