@@ -52,7 +52,7 @@ export function L2AccessRequest() {
           text: result.error || "Failed to request L2 access",
         });
       }
-    } catch (error) {
+    } catch {
       setMessage({
         type: "error",
         text: "An error occurred while requesting L2 access",

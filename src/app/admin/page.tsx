@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/common/button";
 
 type L2AccessRequest = {
@@ -71,7 +70,7 @@ export default function AdminInvitePage() {
         const result = await response.json();
         alert(result.error || "Failed to update status");
       }
-    } catch (error) {
+    } catch {
       alert("An error occurred");
     } finally {
       setProcessing(null);
