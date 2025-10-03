@@ -29,7 +29,7 @@ export function Input({
       ) : null}
       <Button
         className={clsx(
-          "absolute right-1 top-1 h-7! peer-disabled:opacity-50 md:right-1.5 md:top-1.5 md:h-8!",
+          "absolute right-1 top-1/2 -translate-y-1/2 peer-disabled:opacity-50",
           error && "opacity-50",
         )}
         disabled={disabled}

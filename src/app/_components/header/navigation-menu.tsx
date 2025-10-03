@@ -16,6 +16,7 @@ import { Button, ButtonLink } from "@/common/button";
 import type { HeaderFragment, HeaderLiksFragment, ExtendedHeaderLink } from ".";
 import { useToggleState } from "@/hooks/use-toggle-state";
 import { useHasRendered } from "@/hooks/use-has-rendered";
+import { signOut } from "./actions";
 
 // #region desktop 💻
 /* -------------------------------------------------------------------------- */
@@ -29,13 +30,9 @@ export function NavigationMenuHeader({
   links: HeaderLiksFragment[];
   className?: string;
 }) {
-  // Add hardcoded navigation links
+  // Add Portal link
   const additionalLinks: ExtendedHeaderLink[] = [
-    { _id: 'docs', _title: 'Docs', href: 'https://docs.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'founder', _title: 'Founder', href: 'https://portfolio.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'launchweek', _title: 'Launch Week', href: 'https://launch.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://base.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'gallery', _title: 'Gallery', href: 'https://photo.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'portal', _title: 'Portal', href: '/portal', sublinks: { items: [] }, isExternal: false },
   ];
 
   const allLinks: ExtendedHeaderLink[] = [...links, ...additionalLinks];
@@ -168,18 +165,34 @@ function NavigationMenuLinkWithMenu({ _title, href, sublinks }: HeaderLiksFragme
   );
 }
 
-export function DesktopMenu({ navbar, rightCtas }: HeaderFragment) {
+export function DesktopMenu({ navbar, rightCtas, isAuthenticated }: HeaderFragment & { isAuthenticated: boolean }) {
+  // Filter out signup buttons
+  const filteredCtas = rightCtas.items.filter(
+    (cta) => !cta.href?.includes('/sign-up') && !cta.label?.toLowerCase().includes('sign up')
+  );
+
   return (
     <>
       <NavigationMenuHeader className="hidden lg:flex" links={navbar.items} />
       <div className="hidden items-center gap-2 justify-self-end lg:flex">
-        {rightCtas.items.map((cta) => {
-          return (
-            <ButtonLink key={cta._id} className="px-3.5!" href={cta.href} intent={cta.type}>
-              {cta.label}
-            </ButtonLink>
-          );
-        })}
+        {isAuthenticated ? (
+          <form action={signOut}>
+            <button
+              type="submit"
+              className="gap-1 font-normal shrink-0 rounded-full ring-control focus-visible:ring-2 outline-hidden outline-0 bg-accent-500 hover:bg-accent-600 text-text-on-accent-primary border-accent-600 inline-flex items-center justify-center px-3.5 text-sm h-8 md:px-5"
+            >
+              Sign Out
+            </button>
+          </form>
+        ) : (
+          filteredCtas.map((cta) => {
+            return (
+              <ButtonLink key={cta._id} className="px-3.5!" href={cta.href} intent={cta.type}>
+                {cta.label}
+              </ButtonLink>
+            );
+          })
+        )}
       </div>
     </>
   );
@@ -190,19 +203,20 @@ export function DesktopMenu({ navbar, rightCtas }: HeaderFragment) {
 /*                                   Mobile                                   */
 /* -------------------------------------------------------------------------- */
 
-export function MobileMenu({ navbar, rightCtas }: HeaderFragment) {
+export function MobileMenu({ navbar, rightCtas, isAuthenticated }: HeaderFragment & { isAuthenticated: boolean }) {
   const { handleToggle, isOn, handleOff } = useToggleState();
 
-  // Add hardcoded navigation links for mobile as well
+  // Add Portal link for mobile
   const additionalLinks: ExtendedHeaderLink[] = [
-    { _id: 'docs', _title: 'Docs', href: 'https://docs.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'founder', _title: 'Founder', href: 'https://portfolio.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'launchweek', _title: 'Launch Week', href: 'https://launch.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'knowledge', _title: 'Knowledge Base', href: 'https://base.huddler.io', sublinks: { items: [] }, isExternal: true },
-    { _id: 'gallery', _title: 'Gallery', href: 'https://photo.huddler.io', sublinks: { items: [] }, isExternal: true },
+    { _id: 'portal', _title: 'Portal', href: '/portal', sublinks: { items: [] }, isExternal: false },
   ];
 
   const allLinks: ExtendedHeaderLink[] = [...navbar.items, ...additionalLinks];
+
+  // Filter out signup buttons
+  const filteredCtas = rightCtas.items.filter(
+    (cta) => !cta.href?.includes('/sign-up') && !cta.label?.toLowerCase().includes('sign up')
+  );
 
   return (
     <>
@@ -242,13 +256,24 @@ export function MobileMenu({ navbar, rightCtas }: HeaderFragment) {
                 )}
               </nav>
               <div className="flex items-center justify-start gap-2">
-                {rightCtas.items.map((cta) => {
-                  return (
-                    <ButtonLink key={cta._id} href={cta.href} intent={cta.type} size="lg">
-                      {cta.label}
-                    </ButtonLink>
-                  );
-                })}
+                {isAuthenticated ? (
+                  <form action={signOut}>
+                    <button
+                      type="submit"
+                      className="gap-1 font-normal shrink-0 rounded-full ring-control focus-visible:ring-2 outline-hidden outline-0 bg-accent-500 hover:bg-accent-600 text-text-on-accent-primary border-accent-600 inline-flex items-center justify-center px-5 text-base h-10"
+                    >
+                      Sign Out
+                    </button>
+                  </form>
+                ) : (
+                  filteredCtas.map((cta) => {
+                    return (
+                      <ButtonLink key={cta._id} href={cta.href} intent={cta.type} size="lg">
+                        {cta.label}
+                      </ButtonLink>
+                    );
+                  })
+                )}
               </div>
             </div>
           </div>

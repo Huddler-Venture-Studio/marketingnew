@@ -84,6 +84,38 @@ export async function Footer() {
                     {_title}
                   </ButtonLink>
                 ))}
+                <ButtonLink
+                  unstyled
+                  className="px-2 font-light tracking-tight text-text-tertiary hover:text-text-primary dark:text-dark-text-secondary dark:hover:text-dark-text-primary"
+                  href="https://docs.huddler.io"
+                  target="_blank"
+                >
+                  Docs
+                </ButtonLink>
+                <ButtonLink
+                  unstyled
+                  className="px-2 font-light tracking-tight text-text-tertiary hover:text-text-primary dark:text-dark-text-secondary dark:hover:text-dark-text-primary"
+                  href="https://portfolio.huddler.io"
+                  target="_blank"
+                >
+                  Founder
+                </ButtonLink>
+                <ButtonLink
+                  unstyled
+                  className="px-2 font-light tracking-tight text-text-tertiary hover:text-text-primary dark:text-dark-text-secondary dark:hover:text-dark-text-primary"
+                  href="https://base.huddler.io"
+                  target="_blank"
+                >
+                  Knowledge Base
+                </ButtonLink>
+                <ButtonLink
+                  unstyled
+                  className="px-2 font-light tracking-tight text-text-tertiary hover:text-text-primary dark:text-dark-text-secondary dark:hover:text-dark-text-primary"
+                  href="https://photo.huddler.io"
+                  target="_blank"
+                >
+                  Gallery
+                </ButtonLink>
               </nav>
               <div className="col-start-2 row-start-1 flex items-center gap-3 self-center justify-self-end sm:col-span-1 sm:col-start-3 sm:row-start-1">
                 <p className="hidden text-text-tertiary dark:text-dark-text-tertiary sm:block">

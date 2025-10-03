@@ -2,6 +2,7 @@ import { ButtonLink } from "@/common/button";
 import { Pump } from "basehub/react-pump";
 import { buttonFragment } from "@/lib/basehub/fragments";
 import { fragmentOn } from "basehub";
+import { createClient } from "@/lib/supabase/server";
 
 import { DesktopMenu, MobileMenu } from "./navigation-menu";
 import { DarkLightImageAutoscale } from "@/common/dark-light-image";
@@ -85,6 +86,15 @@ export async function Header() {
       ]) => {
         "use server";
 
+        // Check if user is authenticated
+        const supabase = await createClient();
+        const {
+          data: { user },
+        } = await supabase.auth.getUser();
+
+        // Only pass serializable user data to client components
+        const isAuthenticated = !!user;
+
         return (
           <header className="sticky left-0 top-0 z-100 flex w-full flex-col border-b border-border bg-surface-primary dark:border-dark-border dark:bg-dark-surface-primary">
             <div className="flex h-(--header-height) bg-surface-primary dark:bg-dark-surface-primary">
@@ -92,8 +102,8 @@ export async function Header() {
                 <ButtonLink unstyled className="flex items-center ring-offset-2" href="/">
                   <DarkLightImageAutoscale priority {...settings.logo} />
                 </ButtonLink>
-                <DesktopMenu {...header} />
-                <MobileMenu {...header} />
+                <DesktopMenu {...header} isAuthenticated={isAuthenticated} />
+                <MobileMenu {...header} isAuthenticated={isAuthenticated} />
               </div>
             </div>
           </header>
