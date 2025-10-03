@@ -207,7 +207,7 @@ export default function AdminInvitePage() {
                 <p className="text-xs text-text-tertiary dark:text-dark-text-tertiary">
                   Investors can view portal content. Admins have full access.
                 </p>
-                <Button type="submit" disabled={loading} className="h-11 px-6" intent="primary" size="sm">
+                <Button type="submit" disabled={loading} className="h-11 px-6" intent="primary">
                   {loading ? "Sending..." : "Send Invitation"}
                 </Button>
               </div>
