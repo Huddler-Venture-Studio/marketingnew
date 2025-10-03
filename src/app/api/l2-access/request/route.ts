@@ -66,10 +66,10 @@ export async function POST() {
     }
 
     return NextResponse.json({ success: true, data }, { status: 200 });
-  } catch (error) {
-    console.error("L2 access request exception:", error);
+  } catch (requestError) {
+    console.error("L2 access request exception:", requestError);
     return NextResponse.json(
-      { error: "Failed to request L2 access", details: error instanceof Error ? error.message : String(error) },
+      { error: "Failed to request L2 access", details: requestError instanceof Error ? requestError.message : String(requestError) },
       { status: 500 }
     );
   }
@@ -100,7 +100,7 @@ export async function GET() {
     }
 
     return NextResponse.json({ data: data || null }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to get L2 access status" },
       { status: 500 }

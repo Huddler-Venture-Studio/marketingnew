@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { Button } from "@/common/button";
 import { L2AccessRequest } from "./l2-access-request";
 
 export const metadata: Metadata = {

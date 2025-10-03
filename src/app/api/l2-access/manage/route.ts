@@ -86,7 +86,11 @@ export async function POST(request: NextRequest) {
     }
 
     // Update the specific request by ID
-    const updateData: any = {
+    const updateData: {
+      status: string;
+      notes: string | null;
+      approved_at?: string;
+    } = {
       status,
       notes: notes || null,
     };
@@ -132,7 +136,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json({ success: true, data }, { status: 200 });
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { error: "Failed to update L2 access" },
       { status: 500 }

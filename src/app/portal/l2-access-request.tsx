@@ -22,8 +22,8 @@ export function L2AccessRequest() {
       if (response.ok) {
         setStatus(result.data?.status || null);
       }
-    } catch (error) {
-      console.error("Failed to fetch L2 status:", error);
+    } catch (fetchError) {
+      console.error("Failed to fetch L2 status:", fetchError);
     } finally {
       setLoading(false);
     }

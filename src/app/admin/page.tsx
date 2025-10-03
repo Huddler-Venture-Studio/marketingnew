@@ -30,7 +30,6 @@ export default function AdminInvitePage() {
   const [l2Loading, setL2Loading] = useState(true);
   const [processing, setProcessing] = useState<string | null>(null);
   const [hoveredReject, setHoveredReject] = useState<string | null>(null);
-  const supabase = createClient();
 
   useEffect(() => {
     fetchL2Requests();
@@ -44,8 +43,8 @@ export default function AdminInvitePage() {
       if (response.ok) {
         setL2Requests(result.data || []);
       }
-    } catch (error) {
-      console.error("Failed to fetch L2 requests:", error);
+    } catch (fetchError) {
+      console.error("Failed to fetch L2 requests:", fetchError);
     } finally {
       setL2Loading(false);
     }
@@ -130,7 +129,7 @@ export default function AdminInvitePage() {
         });
         setEmail("");
       }
-    } catch (err) {
+    } catch {
       setMessage({
         type: "error",
         text: "Failed to send invitation. Please try again.",

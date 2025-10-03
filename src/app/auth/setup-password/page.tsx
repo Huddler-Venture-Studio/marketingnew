@@ -13,7 +13,6 @@ export default function SetupPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [sessionReady, setSessionReady] = useState(false);
-  const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createClient();
 
@@ -46,7 +45,7 @@ export default function SetupPasswordPage() {
           } else {
             setSessionReady(true);
           }
-        } catch (err) {
+        } catch {
           setError("Failed to verify invitation. Please try again.");
         }
       } else {
@@ -109,7 +108,7 @@ export default function SetupPasswordPage() {
       setTimeout(() => {
         window.location.href = "https://huddler.io";
       }, 2000);
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
     } finally {
       setLoading(false);

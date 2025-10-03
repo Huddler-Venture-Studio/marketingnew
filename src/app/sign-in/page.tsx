@@ -31,7 +31,7 @@ export default function SignInPage() {
         router.push("/portal");
         router.refresh();
       }
-    } catch (err) {
+    } catch {
       setError("An unexpected error occurred");
     } finally {
       setLoading(false);
