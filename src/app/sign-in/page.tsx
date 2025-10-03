@@ -27,13 +27,13 @@ export default function SignInPage() {
 
       if (error) {
         setError(error.message);
+        setLoading(false);
       } else {
-        router.push("/portal");
-        router.refresh();
+        // Don't set loading to false, let the redirect handle it
+        window.location.href = "/portal";
       }
     } catch {
       setError("An unexpected error occurred");
-    } finally {
       setLoading(false);
     }
   };
@@ -96,7 +96,7 @@ export default function SignInPage() {
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-[100px]"
+                className="min-w-[120px]"
                 intent="primary"
               >
                 {loading ? "Signing in..." : "Sign In"}
