@@ -190,9 +190,9 @@ export default async function PortalPage() {
             </div>
           </Link>
 
-          {/* Updates */}
+          {/* Calendar */}
           <Link
-            href="/portal/updates"
+            href="/portal/calendar"
             className="group block rounded-lg border border-border bg-surface-secondary p-8 transition-all hover:border-text-tertiary hover:shadow-lg dark:border-dark-border dark:bg-dark-surface-secondary dark:hover:border-dark-text-tertiary"
           >
             <div className="mb-4 flex items-center gap-3">
@@ -208,19 +208,19 @@ export default async function PortalPage() {
                     strokeLinecap="round"
                     strokeLinejoin="round"
                     strokeWidth={2}
-                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                   />
                 </svg>
               </div>
               <h2 className="text-2xl font-semibold text-text-primary dark:text-dark-text-primary">
-                Updates
+                Calendar
               </h2>
             </div>
             <p className="text-text-secondary dark:text-dark-text-secondary">
-              Latest news and announcements from Huddler
+              View upcoming events and schedule meetings
             </p>
             <div className="mt-4 flex items-center gap-2 text-sm font-medium text-text-tertiary group-hover:text-text-primary dark:text-dark-text-tertiary dark:group-hover:text-dark-text-primary">
-              View Updates
+              View Calendar
               <svg
                 className="h-4 w-4 transition-transform group-hover:translate-x-1"
                 fill="none"

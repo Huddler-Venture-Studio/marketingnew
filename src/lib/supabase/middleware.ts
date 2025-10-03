@@ -37,7 +37,12 @@ export async function updateSession(request: NextRequest) {
 
   // Protect /admin routes - only super_admin can access
   if (request.nextUrl.pathname.startsWith('/admin')) {
+    console.log('🔐 Admin route accessed:', request.nextUrl.pathname)
+    console.log('👤 User:', user?.email)
+    console.log('🏷️  User role:', user?.user_metadata?.role)
+
     if (!user) {
+      console.log('❌ No user - redirecting to sign-in')
       const url = request.nextUrl.clone()
       url.pathname = '/sign-in'
       return NextResponse.redirect(url)
@@ -45,10 +50,13 @@ export async function updateSession(request: NextRequest) {
 
     const isSuperAdmin = user.user_metadata?.role === 'super_admin'
     if (!isSuperAdmin) {
+      console.log('❌ Not super admin - redirecting to portal')
       const url = request.nextUrl.clone()
       url.pathname = '/portal'
       return NextResponse.redirect(url)
     }
+
+    console.log('✅ Super admin access granted')
   }
 
   if (
