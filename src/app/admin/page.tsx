@@ -41,9 +41,11 @@ export default function AdminInvitePage() {
 
       if (response.ok) {
         setL2Requests(result.data || []);
+      } else {
+        console.error("Failed to fetch L2 requests:", result);
       }
     } catch (fetchError) {
-      console.error("Failed to fetch L2 requests:", fetchError);
+      console.error("Failed to fetch L2 requests exception:", fetchError);
     } finally {
       setL2Loading(false);
     }
