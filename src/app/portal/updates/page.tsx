@@ -39,7 +39,20 @@ export default async function UpdatesPage() {
   });
 
   let data;
+  let schemaTest;
+
   try {
+    // First test what's available
+    schemaTest = await weeklyUpdateClient.query({
+      _sys: {
+        title: true,
+        id: true,
+      },
+    });
+
+    console.log('🔍 Schema test result:', JSON.stringify(schemaTest, null, 2));
+
+    // Now try the full query
     data = await weeklyUpdateClient.query({
       __typename: true,
       generalCopy: {
