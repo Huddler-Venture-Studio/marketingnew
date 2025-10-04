@@ -192,7 +192,7 @@ export default async function PortalPage() {
 
           {/* Calendar */}
           <Link
-            href="/portal/calendar"
+            href="https://cal.com/aidan-o-brien-udcyvd/30min"
             className="group block rounded-lg border border-border bg-surface-secondary p-8 transition-all hover:border-text-tertiary hover:shadow-lg dark:border-dark-border dark:bg-dark-surface-secondary dark:hover:border-dark-text-tertiary"
           >
             <div className="mb-4 flex items-center gap-3">
@@ -336,7 +336,7 @@ export default async function PortalPage() {
 
               {/* Weekly Update */}
               <Link
-                href="https://what-did-you-get-done-this-week.vercel.app/"
+                href="/portal/updates"
                 className="group block rounded-lg border border-border bg-surface-secondary p-8 transition-all hover:border-text-tertiary hover:shadow-lg dark:border-dark-border dark:bg-dark-surface-secondary dark:hover:border-dark-text-tertiary"
               >
                 <div className="mb-4 flex items-center gap-3">
