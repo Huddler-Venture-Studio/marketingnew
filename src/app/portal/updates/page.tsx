@@ -10,9 +10,9 @@ export const metadata: Metadata = {
   description: "Latest weekly updates and announcements from Huddler",
 };
 
-// Create a separate BaseHub client for the buildinpublic repository
-const buildinpublicClient = basehub({
-  token: process.env.BASEHUB_BUILDINPUBLIC_TOKEN!,
+// Create a separate BaseHub client for the weeklyupdate repository
+const weeklyUpdateClient = basehub({
+  token: process.env.BASEHUB_WEEKLYUPDATE_TOKEN!,
 });
 
 export default async function UpdatesPage() {
@@ -29,7 +29,7 @@ export default async function UpdatesPage() {
 
   let data;
   try {
-    data = await buildinpublicClient.query({
+    data = await weeklyUpdateClient.query({
       __typename: true,
       generalCopy: {
         _id: true,
