@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "Latest weekly updates and announcements from Huddler",
 };
 
+// Revalidate every 60 seconds to get fresh data from BaseHub
+export const revalidate = 60;
+
 // Create a separate BaseHub client for the weeklyupdate repository
 // Note: Not using draft mode for this client - it will query published content
 
@@ -31,28 +34,8 @@ export default async function UpdatesPage() {
     draft: isDraftMode,
   });
 
-  // Log token status for debugging
-  console.log('🔍 Weekly Updates Debug:', {
-    hasToken: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN,
-    tokenPrefix: process.env.BASEHUB_WEEKLYUPDATE_TOKEN?.substring(0, 10),
-    isDraftMode,
-  });
-
   let data;
-  let schemaTest;
-
   try {
-    // First test what's available
-    schemaTest = await weeklyUpdateClient.query({
-      _sys: {
-        title: true,
-        id: true,
-      },
-    });
-
-    console.log('🔍 Schema test result:', JSON.stringify(schemaTest, null, 2));
-
-    // Now try the full query
     data = await weeklyUpdateClient.query({
       __typename: true,
       generalCopy: {
@@ -85,10 +68,6 @@ export default async function UpdatesPage() {
     });
   } catch (error) {
     console.error('BaseHub query error:', error);
-    console.error('Error details:', {
-      message: error instanceof Error ? error.message : 'Unknown error',
-      hasToken: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN,
-    });
     return (
       <div className="min-h-screen bg-black font-mono text-white flex items-center justify-center">
         <div className="text-center p-8">
