@@ -27,6 +27,12 @@ export default async function UpdatesPage() {
 
   await draftMode();
 
+  // Log token status for debugging
+  console.log('🔍 Weekly Updates Debug:', {
+    hasToken: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN,
+    tokenPrefix: process.env.BASEHUB_WEEKLYUPDATE_TOKEN?.substring(0, 10),
+  });
+
   let data;
   try {
     data = await weeklyUpdateClient.query({
@@ -61,6 +67,10 @@ export default async function UpdatesPage() {
     });
   } catch (error) {
     console.error('BaseHub query error:', error);
+    console.error('Error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      hasToken: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN,
+    });
     return (
       <div className="min-h-screen bg-black font-mono text-white flex items-center justify-center">
         <div className="text-center p-8">
