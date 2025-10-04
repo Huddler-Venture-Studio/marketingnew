@@ -11,9 +11,7 @@ export const metadata: Metadata = {
 };
 
 // Create a separate BaseHub client for the weeklyupdate repository
-const weeklyUpdateClient = basehub({
-  token: process.env.BASEHUB_WEEKLYUPDATE_TOKEN!,
-});
+// Note: Not using draft mode for this client - it will query published content
 
 export default async function UpdatesPage() {
   const supabase = await createClient();
@@ -25,12 +23,19 @@ export default async function UpdatesPage() {
     redirect("/sign-in");
   }
 
-  await draftMode();
+  const { isEnabled: isDraftMode } = await draftMode();
+
+  // Create client with draft mode if enabled
+  const weeklyUpdateClient = basehub({
+    token: process.env.BASEHUB_WEEKLYUPDATE_TOKEN!,
+    draft: isDraftMode,
+  });
 
   // Log token status for debugging
   console.log('🔍 Weekly Updates Debug:', {
     hasToken: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN,
     tokenPrefix: process.env.BASEHUB_WEEKLYUPDATE_TOKEN?.substring(0, 10),
+    isDraftMode,
   });
 
   let data;
