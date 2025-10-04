@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { L2AccessRequest } from "./l2-access-request";
 
 export const metadata: Metadata = {
   title: "Portal",
@@ -20,16 +19,12 @@ export default async function PortalPage() {
   }
 
   const userRole = user.user_metadata?.role || "investor";
+  const isSuperAdmin = userRole === "super_admin";
+  const isAdmin = userRole === "admin";
 
-  // Check if user has L2 access (approved)
-  const { data: l2Access } = await supabase
-    .from("l2_access")
-    .select("*")
-    .eq("user_id", user.id)
-    .eq("status", "approved")
-    .maybeSingle();
-
-  const hasL2Access = userRole === "admin" || !!l2Access;
+  // Super admin and admin have access to all 7 cards
+  // Investors only see 4 cards
+  const showAllCards = isSuperAdmin || isAdmin;
 
   return (
     <div className="container mx-auto px-6 py-16">
@@ -43,8 +38,6 @@ export default async function PortalPage() {
         <p className="mb-8 text-center text-text-secondary dark:text-dark-text-secondary">
           Access all your Huddler resources in one place
         </p>
-
-        {userRole !== "admin" && <L2AccessRequest />}
 
         <div className="mb-16" />
 
@@ -237,8 +230,8 @@ export default async function PortalPage() {
             </div>
           </Link>
 
-          {/* L2 Access Required Sections */}
-          {hasL2Access && (
+          {/* Admin/Super Admin Only Cards - Portfolio, Gallery, Weekly Update */}
+          {showAllCards && (
             <>
               {/* Portfolio */}
               <Link

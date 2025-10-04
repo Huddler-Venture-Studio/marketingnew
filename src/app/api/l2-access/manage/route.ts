@@ -1,8 +1,24 @@
 import { createClient } from "@supabase/supabase-js";
 import { NextRequest, NextResponse } from "next/server";
+import { createClient as createServerClient } from "@/lib/supabase/server";
 
 export async function GET() {
   try {
+    // Check authentication and role
+    const supabase = await createServerClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const userRole = user.user_metadata?.role;
+    if (userRole !== "super_admin") {
+      return NextResponse.json({ error: "Forbidden - Super admin access required" }, { status: 403 });
+    }
+
     // Create admin client
     const supabaseAdmin = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -49,6 +65,21 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+    // Check authentication and role
+    const supabase = await createServerClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const userRole = user.user_metadata?.role;
+    if (userRole !== "super_admin") {
+      return NextResponse.json({ error: "Forbidden - Super admin access required" }, { status: 403 });
+    }
+
     const { userId, status, notes } = await request.json();
 
     if (!userId || !status) {
