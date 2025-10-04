@@ -27,41 +27,55 @@ export default async function UpdatesPage() {
 
   await draftMode();
 
-  const data = await weeklyUpdateClient.query({
-    __typename: true,
-    generalCopy: {
-      _id: true,
-      _title: true,
-      name: true,
-      txt1: true,
-      txt2: true,
-      txt1Color: {
-        hex: true,
-      },
-      accent: {
-        hex: true,
-      },
-    },
-    days: {
-      items: {
+  let data;
+  try {
+    data = await weeklyUpdateClient.query({
+      __typename: true,
+      generalCopy: {
         _id: true,
         _title: true,
-        date: true,
-        day: true,
-        stuff: {
-          json: {
-            content: true,
-          },
-          plainText: true,
+        name: true,
+        txt1: true,
+        txt2: true,
+        txt1Color: {
+          hex: true,
+        },
+        accent: {
+          hex: true,
         },
       },
-    },
-  });
+      days: {
+        items: {
+          _id: true,
+          _title: true,
+          date: true,
+          day: true,
+          stuff: {
+            json: {
+              content: true,
+            },
+            plainText: true,
+          },
+        },
+      },
+    });
+  } catch (error) {
+    console.error('BaseHub query error:', error);
+    // Return a fallback view if BaseHub fails
+    return (
+      <div className="min-h-screen bg-black font-mono text-white flex items-center justify-center">
+        <div className="text-center p-8">
+          <h1 className="text-2xl font-bold mb-4">Updates Temporarily Unavailable</h1>
+          <p className="text-gray-400">We're experiencing issues loading updates. Please try again later.</p>
+        </div>
+      </div>
+    );
+  }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const updates = (data as any).days.items;
+  const updates = (data as any)?.days?.items || [];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const generalCopy = (data as any).generalCopy;
+  const generalCopy = (data as any)?.generalCopy || {};
 
   return (
     <div className="min-h-screen bg-black font-mono text-white">
