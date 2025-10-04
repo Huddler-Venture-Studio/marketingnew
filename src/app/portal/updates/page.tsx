@@ -76,6 +76,7 @@ export default async function UpdatesPage() {
         <div className="text-center p-8">
           <h1 className="text-2xl font-bold mb-4">Updates Temporarily Unavailable</h1>
           <p className="text-gray-400">We&apos;re experiencing issues loading updates. Please try again later.</p>
+          <p className="text-xs text-gray-500 mt-4">Error: {error instanceof Error ? error.message : 'Unknown error'}</p>
         </div>
       </div>
     );
