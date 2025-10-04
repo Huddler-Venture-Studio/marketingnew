@@ -6,8 +6,8 @@ import { draftMode } from "next/headers";
 import UpdatesList from "./updates-list";
 
 export const metadata: Metadata = {
-  title: "Updates - Portal",
-  description: "Latest updates and announcements from Huddler",
+  title: "Weekly Updates - Portal",
+  description: "Latest weekly updates and announcements from Huddler",
 };
 
 // Create a separate BaseHub client for the weeklyupdate repository
