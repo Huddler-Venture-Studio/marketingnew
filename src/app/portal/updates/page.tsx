@@ -29,6 +29,9 @@ export default async function UpdatesPage() {
 
   let data;
   try {
+    console.log('BaseHub token exists:', !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN);
+    console.log('Querying BaseHub for weekly updates...');
+
     data = await weeklyUpdateClient.query({
       __typename: true,
       generalCopy: {
@@ -59,14 +62,26 @@ export default async function UpdatesPage() {
         },
       },
     });
+
+    console.log('BaseHub query successful');
   } catch (error) {
-    console.error('BaseHub query error:', error);
+    console.error('BaseHub query error details:', {
+      message: error instanceof Error ? error.message : 'Unknown error',
+      error: error,
+      tokenExists: !!process.env.BASEHUB_WEEKLYUPDATE_TOKEN
+    });
+
     // Return a fallback view if BaseHub fails
     return (
       <div className="min-h-screen bg-black font-mono text-white flex items-center justify-center">
         <div className="text-center p-8">
           <h1 className="text-2xl font-bold mb-4">Updates Temporarily Unavailable</h1>
           <p className="text-gray-400">We&apos;re experiencing issues loading updates. Please try again later.</p>
+          {process.env.NODE_ENV === 'development' && (
+            <p className="text-xs text-red-400 mt-4">
+              Error: {error instanceof Error ? error.message : 'Unknown error'}
+            </p>
+          )}
         </div>
       </div>
     );
