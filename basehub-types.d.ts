@@ -189,7 +189,7 @@ export interface BlockColor {
     __typename: 'BlockColor'
 }
 
-export type BlockDocument = (AuthorComponent | Authors | AvatarComponent | Avatars | Blog | BlogPostComponent | BooleanComponent | ButtonComponent | CalloutComponent | CalloutV2Component | Categories | CategoryComponent | Changelog | ChangelogPostComponent | Characteristics | CharacteristicsItem | CodeSnippetComponent | Collections | CompaniesComponent | CompanyComponent | ComparisonOptions | Components | CustomTextComponent | CustomerSatisfactionBannerComponent | DarkLightImageComponent | FaqComponent | FaqItemComponent | FeatureComponent | FeatureHeroComponent | FeatureWithIconComponent | Features | FeaturesBigImageComponent | FeaturesBigImageList | FeaturesCardsComponent | FeaturesCardsList | FeaturesCardsListItem | FeaturesGridComponent | FeaturesGridList | FeaturesSideBySideComponent | FeaturesSideBySideList | FeaturesSideBySideListItem | Footer | FormComponent | FormWrapperComponent | FreeformTextComponent | Header | HeaderNavbarLinkComponent | HeadingComponent | HeroComponent | List | ListItem | Metadata | MetadataOverridesComponent | MoreCompanies | Navbar | NavbarItem | Navbar_1 | Newsletter | PageReferenceComponent | Pages | PagesItem | PlanComponent | Plans | Posts | Posts_1 | PricingComponent | PricingPlanComponent | PricingPlans | PricingTableComponent | Questions | QuoteComponent | Quotes | RichTextCalloutComponent | RightCtas | Sections | Settings | Site | SocialLinkComponent | SocialLinks | Sublinks | SublinksItem | TestimonialSliderComponent | TestimonialsGridComponent | Theme | ValueComponent | Values | _AgentStart | authorComponent_AsList | avatarComponent_AsList | blogPostComponent_AsList | booleanComponent_AsList | buttonComponent_AsList | calloutComponent_AsList | calloutV2Component_AsList | categoryComponent_AsList | changelogPostComponent_AsList | characteristicsItem_AsList | codeSnippetComponent_AsList | companiesComponent_AsList | companyComponent_AsList | customTextComponent_AsList | customerSatisfactionBannerComponent_AsList | darkLightImageComponent_AsList | faqComponent_AsList | faqItemComponent_AsList | featureComponent_AsList | featureHeroComponent_AsList | featureWithIconComponent_AsList | featuresBigImageComponent_AsList | featuresCardsComponent_AsList | featuresCardsListItem_AsList | featuresGridComponent_AsList | featuresSideBySideComponent_AsList | featuresSideBySideListItem_AsList | formComponent_AsList | formWrapperComponent_AsList | freeformTextComponent_AsList | headerNavbarLinkComponent_AsList | headingComponent_AsList | heroComponent_AsList | listItem_AsList | metadataOverridesComponent_AsList | navbarItem_AsList | pageReferenceComponent_AsList | pagesItem_AsList | planComponent_AsList | pricingComponent_AsList | pricingPlanComponent_AsList | pricingTableComponent_AsList | quoteComponent_AsList | richTextCalloutComponent_AsList | socialLinkComponent_AsList | sublinksItem_AsList | testimonialSliderComponent_AsList | testimonialsGridComponent_AsList | valueComponent_AsList) & { __isUnion?: true }
+export type BlockDocument = (AuthorComponent | Authors | AvatarComponent | Avatars | Blog | BlogPostComponent | BooleanComponent | ButtonComponent | CalloutComponent | CalloutV2Component | Categories | CategoryComponent | Changelog | ChangelogPostComponent | Characteristics | CharacteristicsItem | CodeSnippetComponent | Collections | CompaniesComponent | CompanyComponent | ComparisonOptions | Components | CustomTextComponent | CustomerSatisfactionBannerComponent | DarkLightImageComponent | FaqComponent | FaqItemComponent | FeatureComponent | FeatureHeroComponent | FeatureWithIconComponent | Features | FeaturesBigImageComponent | FeaturesBigImageList | FeaturesCardsComponent | FeaturesCardsList | FeaturesCardsListItem | FeaturesGridComponent | FeaturesGridList | FeaturesSideBySideComponent | FeaturesSideBySideList | FeaturesSideBySideListItem | Footer | FormComponent | FormWrapperComponent | FreeformTextComponent | Header | HeaderNavbarLinkComponent | HeadingComponent | HeroComponent | List | ListItem | Metadata | MetadataOverridesComponent | MoreCompanies | Navbar | NavbarItem | Navbar_1 | Newsletter | PageReferenceComponent | Pages | PagesItem | PlanComponent | Plans | Posts | Posts_1 | PricingComponent | PricingPlanComponent | PricingPlans | PricingTableComponent | Questions | QuoteComponent | Quotes | RichTextCalloutComponent | RightCtas | Sections | Settings | Site | SocialLinkComponent | SocialLinks | Sublinks | SublinksItem | TestimonialSliderComponent | TestimonialsGridComponent | Theme | ValueComponent | Values | _AgentStart | _AgentUntitled | authorComponent_AsList | avatarComponent_AsList | blogPostComponent_AsList | booleanComponent_AsList | buttonComponent_AsList | calloutComponent_AsList | calloutV2Component_AsList | categoryComponent_AsList | changelogPostComponent_AsList | characteristicsItem_AsList | codeSnippetComponent_AsList | companiesComponent_AsList | companyComponent_AsList | customTextComponent_AsList | customerSatisfactionBannerComponent_AsList | darkLightImageComponent_AsList | faqComponent_AsList | faqItemComponent_AsList | featureComponent_AsList | featureHeroComponent_AsList | featureWithIconComponent_AsList | featuresBigImageComponent_AsList | featuresCardsComponent_AsList | featuresCardsListItem_AsList | featuresGridComponent_AsList | featuresSideBySideComponent_AsList | featuresSideBySideListItem_AsList | formComponent_AsList | formWrapperComponent_AsList | freeformTextComponent_AsList | headerNavbarLinkComponent_AsList | headingComponent_AsList | heroComponent_AsList | listItem_AsList | metadataOverridesComponent_AsList | navbarItem_AsList | pageReferenceComponent_AsList | pagesItem_AsList | planComponent_AsList | pricingComponent_AsList | pricingPlanComponent_AsList | pricingTableComponent_AsList | quoteComponent_AsList | richTextCalloutComponent_AsList | socialLinkComponent_AsList | sublinksItem_AsList | testimonialSliderComponent_AsList | testimonialsGridComponent_AsList | valueComponent_AsList) & { __isUnion?: true }
 
 export interface BlockDocumentSys {
     apiNamePath: Scalars['String']
@@ -2033,6 +2033,35 @@ export interface _AgentStart {
     __typename: '_AgentStart'
 }
 
+export interface _AgentUntitled {
+    _agentKey: Scalars['String']
+    _analyticsKey: Scalars['String']
+    _dashboardUrl: Scalars['String']
+    _id: Scalars['String']
+    _idPath: Scalars['String']
+    _slug: Scalars['String']
+    _slugPath: Scalars['String']
+    _sys: BlockDocumentSys
+    _title: Scalars['String']
+    accent: Scalars['String']
+    avatar: Scalars['String']
+    chatUrl: Scalars['String']
+    commit: Scalars['Boolean']
+    description: Scalars['String']
+    edit: Scalars['Boolean']
+    embedUrl: Scalars['String']
+    getUserInfo: Scalars['Boolean']
+    grayscale: Scalars['String']
+    manageBranches: Scalars['Boolean']
+    mcpUrl: Scalars['String']
+    model: Scalars['String']
+    openRouterKey: (Scalars['String'] | null)
+    searchTheWeb: Scalars['Boolean']
+    slackInstallUrl: Scalars['String']
+    systemPrompt: Scalars['String']
+    __typename: '_AgentUntitled'
+}
+
 export interface _BranchInfo {
     archivedAt: (Scalars['String'] | null)
     archivedBy: (Scalars['String'] | null)
@@ -2100,6 +2129,7 @@ export type _StructureFormatEnum = 'json' | 'xml'
 
 export interface _agents {
     start: _AgentStart
+    untitled: _AgentUntitled
     __typename: '_agents'
 }
 
@@ -3349,6 +3379,7 @@ export interface BlockDocumentGenqlSelection{
     on_ValueComponent?: ValueComponentGenqlSelection
     on_Values?: ValuesGenqlSelection
     on__AgentStart?: _AgentStartGenqlSelection
+    on__AgentUntitled?: _AgentUntitledGenqlSelection
     on_authorComponent_AsList?: authorComponent_AsListGenqlSelection
     on_avatarComponent_AsList?: avatarComponent_AsListGenqlSelection
     on_blogPostComponent_AsList?: blogPostComponent_AsListGenqlSelection
@@ -6794,6 +6825,42 @@ export interface _AgentStartGenqlSelection{
     __fragmentOn?: "_AgentStart"
 }
 
+export interface _AgentUntitledGenqlSelection{
+    _agentKey?: boolean | number
+    _analyticsKey?: { __args: {
+    /**
+     * The scope of the analytics key. Use `send` for just ingesting data. Use `query` if you need to show an analytics data in your website.
+     * 
+     * Have in mind, if you expose your `query` analytics key in the frontend, you'll be exposing all of this block's analytics data to the public. This is generally safe, but it might not be in your case.
+     */
+    scope?: (AnalyticsKeyScope | null)} } | boolean | number
+    _dashboardUrl?: boolean | number
+    _id?: boolean | number
+    _idPath?: boolean | number
+    _slug?: boolean | number
+    _slugPath?: boolean | number
+    _sys?: BlockDocumentSysGenqlSelection
+    _title?: boolean | number
+    accent?: boolean | number
+    avatar?: boolean | number
+    chatUrl?: boolean | number
+    commit?: boolean | number
+    description?: boolean | number
+    edit?: boolean | number
+    embedUrl?: boolean | number
+    getUserInfo?: boolean | number
+    grayscale?: boolean | number
+    manageBranches?: boolean | number
+    mcpUrl?: boolean | number
+    model?: boolean | number
+    openRouterKey?: boolean | number
+    searchTheWeb?: boolean | number
+    slackInstallUrl?: boolean | number
+    systemPrompt?: boolean | number
+    __typename?: boolean | number
+    __fragmentOn?: "_AgentUntitled"
+}
+
 export interface _BranchInfoGenqlSelection{
     archivedAt?: boolean | number
     archivedBy?: boolean | number
@@ -6862,6 +6929,7 @@ export interface _PlaygroundInfoGenqlSelection{
 
 export interface _agentsGenqlSelection{
     start?: _AgentStartGenqlSelection
+    untitled?: _AgentUntitledGenqlSelection
     __typename?: boolean | number
     __fragmentOn?: "_agents"
 }
@@ -9180,6 +9248,10 @@ export interface FragmentsMap {
   _AgentStart: {
     root: _AgentStart,
     selection: _AgentStartGenqlSelection,
+}
+  _AgentUntitled: {
+    root: _AgentUntitled,
+    selection: _AgentUntitledGenqlSelection,
 }
   _BranchInfo: {
     root: _BranchInfo,

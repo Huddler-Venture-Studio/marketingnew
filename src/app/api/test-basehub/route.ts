@@ -7,34 +7,12 @@ export async function GET() {
   });
 
   try {
+    // Try different naming conventions
     const data = await weeklyUpdateClient.query({
       __typename: true,
-      generalCopy: {
-        _id: true,
-        _title: true,
-        name: true,
-        txt1: true,
-        txt2: true,
-        txt1Color: {
-          hex: true,
-        },
-        accent: {
-          hex: true,
-        },
-      },
-      days: {
-        items: {
-          _id: true,
-          _title: true,
-          date: true,
-          day: true,
-          stuff: {
-            json: {
-              content: true,
-            },
-            plainText: true,
-          },
-        },
+      _sys: {
+        id: true,
+        title: true,
       },
     });
 
