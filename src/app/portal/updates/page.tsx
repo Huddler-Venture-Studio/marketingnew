@@ -66,7 +66,7 @@ export default async function UpdatesPage() {
       <div className="min-h-screen bg-black font-mono text-white flex items-center justify-center">
         <div className="text-center p-8">
           <h1 className="text-2xl font-bold mb-4">Updates Temporarily Unavailable</h1>
-          <p className="text-gray-400">We're experiencing issues loading updates. Please try again later.</p>
+          <p className="text-gray-400">We&apos;re experiencing issues loading updates. Please try again later.</p>
         </div>
       </div>
     );
