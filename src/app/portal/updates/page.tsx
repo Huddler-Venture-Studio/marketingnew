@@ -88,7 +88,7 @@ export default async function UpdatesPage() {
     <div className="min-h-screen bg-black font-mono text-white">
       {/* Top banner */}
       <div
-        className="flex items-center justify-center"
+        className="hidden flex items-center justify-center"
         style={{
           width: '100%',
           height: '240px',
